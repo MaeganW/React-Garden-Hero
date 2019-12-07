@@ -3,11 +3,19 @@ import { Button } from "react-bootstrap";
 
 function StartPanel() {
   return (
-    <div className="start-panel">
+    <div className="start-panel panel">
       <h1>Rules</h1>
-      <p>You own a small garden in an unpredictable and sometimes inhospitable environment.</p>
-      <p>Between now and harvest several unexpected events are likely to occur.</p>
-      <p>You will be given several tools to combat each event, but may only select one.</p>
+      <p>
+        You own a small garden in an unpredictable and sometimes inhospitable
+        environment.
+      </p>
+      <p>
+        Between now and harvest several unexpected events are likely to occur.
+      </p>
+      <p>
+        You will be given several tools to combat each event, but may only
+        select one.
+      </p>
       <p>If you plant's health drops below 50, you lose.</p>
       <p>Choose wisely.</p>
       <Button variant="success">Start Game</Button>

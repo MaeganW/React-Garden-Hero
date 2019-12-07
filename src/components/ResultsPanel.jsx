@@ -20,7 +20,7 @@ function ResultsPanel() {
       : 0;
 
   return (
-    <div className="results-panel">
+    <div className="results-panel panel">
       <h1>
         The {currentEvent.name} took {currentEvent.unmitigatedDamage} points
       </h1>
