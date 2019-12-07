@@ -1,0 +1,30 @@
+[
+  {
+    "name": "rain cure",
+    "id": 1
+  },
+  {
+    "name": "bug cure",
+    "id": 2
+  },
+  {
+    "name": "heat cure",
+    "id": 3
+  },
+  {
+    "name": "hail cure",
+    "id": 4
+  },
+  {
+    "name": "weed cure",
+    "id": 5
+  },
+  {
+    "name": "groudhog cure",
+    "id": 6
+  },
+  {
+    "name": "kids cure",
+    "id": 7
+  }
+]
