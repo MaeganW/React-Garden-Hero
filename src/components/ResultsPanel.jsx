@@ -1,7 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-function ResultsPanel() {
+function ResultsPanel(props) {
+  const { setShowResults, setShowGame, setShowEnd } = props;
+
   const currentEvent = {
     name: "Groundhog Menace",
     unmitigatedDamage: 20,
@@ -25,7 +27,7 @@ function ResultsPanel() {
         The {currentEvent.name} took {currentEvent.unmitigatedDamage} points
       </h1>
       <h1>
-        Your {chosenSolution} saved {pointsSaved}
+        Your {chosenSolution.name} saved {pointsSaved} points
       </h1>
       <Button variant="success">Continue</Button>
     </div>

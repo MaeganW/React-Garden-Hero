@@ -1,7 +1,14 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-function StartPanel() {
+function StartPanel(props) {
+  const { setShowStart, setShowGame } = props;
+
+  const handleStart = () => {
+    setShowStart(false);
+    setShowGame(true);
+  };
+
   return (
     <div className="start-panel panel">
       <h1>Rules</h1>
@@ -18,7 +25,9 @@ function StartPanel() {
       </p>
       <p>If you plant's health drops below 50, you lose.</p>
       <p>Choose wisely.</p>
-      <Button variant="success">Start Game</Button>
+      <Button onClick={handleStart} variant="primary">
+        Start Game
+      </Button>
     </div>
   );
 }
