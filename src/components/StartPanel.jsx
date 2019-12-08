@@ -25,7 +25,7 @@ function StartPanel(props) {
       </p>
       <p>If you plant's health drops below 50, you lose.</p>
       <p>Choose wisely.</p>
-      <Button onClick={handleStart} variant="primary">
+      <Button onClick={handleStart} variant="success">
         Start Game
       </Button>
     </div>

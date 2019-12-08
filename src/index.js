@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./styles.scss";
-
 import StartPanel from "./components/StartPanel";
 import GamePanel from "./components/GamePanel";
 import ResultsPanel from "./components/ResultsPanel";
 import EndPanel from "./components/EndPanel";
+import { getSolutions } from "./services/SolutionService";
+import { getEvents } from "./services/EventService";
 
 function App() {
   const [showStart, setShowStart] = useState(true);
   const [showGame, setShowGame] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [showEnd, setShowEnd] = useState(false);
+
+  const [health, setHealth] = useState(100);
+  const [currentEvent, setCurrentEvent] = useState(null);
+  const [chosenSolution, setChosenSolution] = useState(null);
+  const [turn, setTurn] = useState(0);
+
+  const solutions = getSolutions();
+  const events = getEvents();
 
   const startProps = {
     setShowStart,
@@ -20,7 +29,13 @@ function App() {
 
   const gameProps = {
     setShowGame,
-    setShowResults
+    setShowResults,
+    currentEvent,
+    health,
+    turn,
+    setTurn,
+    setChosenSolution,
+    solutions
   };
 
   const resultsProps = {
