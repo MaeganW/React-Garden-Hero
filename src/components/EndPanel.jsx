@@ -13,7 +13,7 @@ function EndPanel(props) {
 
   return (
     <div className="end-panel panel">
-      <h2>Final Score</h2>
+      <h2 className="green">Final Score</h2>
       <h2>{health}</h2>
       {health > 50 ? (
         <h2 className="green">You Win</h2>

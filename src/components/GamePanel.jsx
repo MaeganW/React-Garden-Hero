@@ -69,7 +69,11 @@ function GamePanel(props) {
           <SolutionsDisplay {...solutionsDisplayProps} />
         </div>
       </div>
-      <Button onClick={handleEndTurn} variant="success">
+      <Button
+        disabled={!chosenSolution}
+        onClick={handleEndTurn}
+        variant="success"
+      >
         End Turn {turn}
       </Button>
     </div>

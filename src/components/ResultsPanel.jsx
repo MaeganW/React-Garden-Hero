@@ -8,6 +8,7 @@ function ResultsPanel(props) {
     setShowEnd,
     currentEvent,
     chosenSolution,
+    setChosenSolution,
     turn
   } = props;
 
@@ -18,6 +19,7 @@ function ResultsPanel(props) {
     currentEvent.solutionId === chosenSolution.id ? 5 : currentEvent.damage;
 
   const handleContinue = () => {
+    setChosenSolution(null);
     if (turn < 4) {
       setShowGame(true);
     } else {
@@ -37,9 +39,7 @@ function ResultsPanel(props) {
         <span className="green">{pointsSaved} points</span>
       </h2>
       <br />
-      <h2>
-        Total Damage: <span className="red">{damageDealt} points</span>
-      </h2>
+      <h2 className="red">Total Damage: {damageDealt} points</h2>
       <br />
       <Button variant="success" onClick={handleContinue}>
         Continue

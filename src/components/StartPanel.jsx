@@ -23,7 +23,7 @@ function StartPanel(props) {
         You will be given several tools to combat each event, but may only
         select one.
       </p>
-      <p>If you plant's health drops below 50, you lose.</p>
+      <p>If your plant's health drops below 50 by the end, you lose.</p>
       <p>Choose wisely.</p>
       <Button onClick={handleStart} variant="success">
         Start Game

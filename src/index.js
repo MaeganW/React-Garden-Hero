@@ -48,6 +48,7 @@ function App() {
     setShowEnd,
     currentEvent,
     chosenSolution,
+    setChosenSolution,
     turn
   };
 
