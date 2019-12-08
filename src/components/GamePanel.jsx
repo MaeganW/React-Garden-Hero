@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import SolutionsDisplay from "./SolutionsDisplay";
 
 function GamePanel(props) {
+  const [gameReady, setGameReady] = useState(false);
+
   const {
     setShowGame,
     setShowResults,
@@ -16,7 +18,15 @@ function GamePanel(props) {
     setChosenSolution
   } = props;
 
-  useEffect(() => setTurn(turn + 1), []);
+  useEffect(() => {
+    setTurn(turn + 1);
+  }, []);
+
+  useEffect(() => {
+    const randomEventId = Math.ceil(Math.random() * events.length);
+    setCurrentEvent(events.find(e => e.id === randomEventId));
+    setGameReady(true);
+  }, [currentEvent]);
 
   const solutionsDisplayProps = {
     setChosenSolution,
@@ -28,12 +38,12 @@ function GamePanel(props) {
     setShowResults(true);
   };
 
-  return (
+  return !gameReady ? null : (
     <div className="game-panel panel">
       <div className="game-panel__top">
         <div className="game-panel__event">
           <h2>Current Event</h2>
-          <p>{currentEvent}</p>
+          <p>{currentEvent.name}</p>
         </div>
       </div>
       <div className="game-panel__middle">
