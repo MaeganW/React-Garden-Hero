@@ -30,7 +30,9 @@ function App() {
   const gameProps = {
     setShowGame,
     setShowResults,
+    events,
     currentEvent,
+    setCurrentEvent,
     health,
     turn,
     setTurn,

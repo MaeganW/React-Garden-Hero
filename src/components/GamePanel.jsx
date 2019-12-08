@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
+import SolutionsDisplay from "./SolutionsDisplay";
 
 function GamePanel(props) {
   const {
     setShowGame,
     setShowResults,
+    events,
     currentEvent,
+    setCurrentEvent,
     health,
     turn,
     setTurn,
@@ -15,12 +18,15 @@ function GamePanel(props) {
 
   useEffect(() => setTurn(turn + 1), []);
 
+  const solutionsDisplayProps = {
+    setChosenSolution,
+    solutions
+  };
+
   const handleEndTurn = () => {
     setShowGame(false);
     setShowResults(true);
   };
-
-  const handleSelectSolution = solution => setChosenSolution(solution);
 
   return (
     <div className="game-panel panel">
@@ -38,12 +44,7 @@ function GamePanel(props) {
       </div>
       <div className="game-panel__bottom">
         <div className="game-panel__solutions">
-          <h2>Choose Wisely</h2>
-          {/* {solutions.map(s => (
-            <input onChange={handleSelectSolution(s)} type="radio" key={s.id}>
-              {s.name}
-            </input>
-          ))} */}
+          <SolutionsDisplay {...solutionsDisplayProps} />
         </div>
       </div>
       <Button onClick={handleEndTurn} variant="success">
