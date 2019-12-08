@@ -1,50 +1,43 @@
 [
   {
     "name": "Heavy Rains",
-    "unmitigatedDamage": 20,
-    "mitigatedDamage": 15,
+    "damage": 20,
     "solutionId": 1,
     "id": 1
   },
   {
     "name": "Bug Hoard",
-    "unmitigatedDamage": 20,
-    "mitigatedDamage": 15,
+    "damage": 20,
     "solutionId": 2,
     "id": 2
   },
   {
     "name": "Heat Wave",
-    "unmitigatedDamage": 15,
-    "mitigatedDamage": 10,
+    "damage": 15,
     "solutionId": 3,
     "id": 3
   },
   {
     "name": "Hail Storm",
-    "unmitigatedDamage": 20,
-    "mitigatedDamage": 15,
+    "damage": 20,
     "solutionId": 4,
     "id": 4
   },
   {
     "name": "Weed Invasion",
-    "unmitigatedDamage": 10,
-    "mitigatedDamage": 5,
+    "damage": 10,
     "solutionId": 5,
     "id": 5
   },
   {
     "name": "Groundhog Menace",
-    "unmitigatedDamage": 15,
-    "mitigatedDamage": 10,
+    "damage": 15,
     "solutionId": 6,
     "id": 6
   },
   {
     "name": "Neighborhood Kids",
-    "unmitigatedDamage": 10,
-    "mitigatedDamage": 5,
+    "damage": 10,
     "solutionId": 7,
     "id": 7
   }

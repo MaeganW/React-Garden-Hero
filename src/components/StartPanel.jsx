@@ -11,7 +11,7 @@ function StartPanel(props) {
 
   return (
     <div className="start-panel panel">
-      <h1>Rules</h1>
+      <h1 className="green">Rules</h1>
       <p>
         You own a small garden in an unpredictable and sometimes inhospitable
         environment.

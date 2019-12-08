@@ -12,8 +12,8 @@ function SolutionsDisplay(props) {
     <Form>
       <fieldset>
         <Form.Group as={Row}>
-          <Form.Label as="legend" column sm={2}>
-            Choose Wisely
+          <Form.Label as="legend" column sm={10}>
+            <h2 className="green">Choose Wisely</h2>
           </Form.Label>
           <Col sm={10}>
             {solutions.map(s => (

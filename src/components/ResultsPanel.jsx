@@ -12,12 +12,13 @@ function ResultsPanel(props) {
   } = props;
 
   const pointsSaved =
-    currentEvent.solutionId === chosenSolution.id
-      ? currentEvent.unmitigatedDamage - currentEvent.mitigatedDamage
-      : 0;
+    currentEvent.solutionId === chosenSolution.id ? currentEvent.damage - 5 : 0;
+
+  const damageDealt =
+    currentEvent.solutionId === chosenSolution.id ? 5 : currentEvent.damage;
 
   const handleContinue = () => {
-    if (turn <= 4) {
+    if (turn < 4) {
       setShowGame(true);
     } else {
       setShowEnd(true);
@@ -27,12 +28,19 @@ function ResultsPanel(props) {
 
   return (
     <div className="results-panel panel">
-      <h1>
-        The {currentEvent.name} took {currentEvent.unmitigatedDamage} points
-      </h1>
-      <h1>
-        Your {chosenSolution.name} saved {pointsSaved} points
-      </h1>
+      <h2>
+        The <span className="red">{currentEvent.name}</span> took{" "}
+        <span className="red">{currentEvent.damage} points</span>
+      </h2>
+      <h2>
+        Your <span className="green">{chosenSolution.name}</span> saved{" "}
+        <span className="green">{pointsSaved} points</span>
+      </h2>
+      <br />
+      <h2>
+        Total Damage: <span className="red">{damageDealt} points</span>
+      </h2>
+      <br />
       <Button variant="success" onClick={handleContinue}>
         Continue
       </Button>

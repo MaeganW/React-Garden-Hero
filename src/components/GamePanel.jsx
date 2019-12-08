@@ -36,27 +36,31 @@ function GamePanel(props) {
     solutions
   };
 
+  const calculateHealth = () => {
+    if (currentEvent.solutionId === chosenSolution.id) {
+      setHealth(health - 5);
+    } else {
+      setHealth(health - currentEvent.damage);
+    }
+  };
+
   const handleEndTurn = () => {
     setShowGame(false);
     setShowResults(true);
-    if (currentEvent.solutionId === setChosenSolution.id) {
-      setHealth(health - currentEvent.mitigatedDamage);
-    } else {
-      setHealth(health - currentEvent.unmitigatedDamage);
-    }
+    calculateHealth();
   };
 
   return !gameReady ? null : (
     <div className="game-panel panel">
       <div className="game-panel__top">
         <div className="game-panel__event">
-          <h2>Current Event</h2>
+          <h2 className="green">Current Event</h2>
           <p>{currentEvent.name}</p>
         </div>
       </div>
       <div className="game-panel__middle">
         <div className="game-panel__health">
-          <h2>Health</h2>
+          <h2 className="green">Health</h2>
           <p>{health}</p>
         </div>
       </div>

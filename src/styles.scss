@@ -1,3 +1,28 @@
+$red: #DC3545;
+$yellow: #FFC106;
+$green: #27A745;
+$blue: #007BFE;
+
+// ==== color classes ====
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}
+
+.blue {
+  color: $blue;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+// ==== base layout ====
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -24,6 +49,6 @@ body, .App {
   height: 100%;
   width: 100%;
   background: #181C1F;
-  color: #61DAFB;
+  color: #fff;
 }
 
