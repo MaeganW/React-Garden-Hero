@@ -47,12 +47,16 @@ function App() {
     setShowGame,
     setShowEnd,
     currentEvent,
-    chosenSolution
+    chosenSolution,
+    turn
   };
 
   const endProps = {
     setShowEnd,
-    setShowGame
+    setShowGame,
+    health,
+    setHealth,
+    setTurn
   };
 
   return (

@@ -2,19 +2,20 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 function EndPanel(props) {
-  const { setShowEnd, setShowGame } = props;
-  const score = 45;
+  const { setShowEnd, setShowGame, health, setHealth, setTurn } = props;
 
-  const playAgain = () => {
-    // reset score
+  const handlePlayAgain = () => {
+    setTurn(0);
+    setHealth(100);
     setShowEnd(false);
     setShowGame(true);
   };
+
   return (
     <div className="end-panel panel">
       <h1>Final Score</h1>
-      <h2>{score}</h2>
-      <h2>You {score > 50 ? "Win" : "Lose"}</h2>
+      <h2>{health}</h2>
+      <h2>You {health > 50 ? "Win" : "Lose"}</h2>
       <Button onClick={handlePlayAgain}>Play Again</Button>
     </div>
   );
