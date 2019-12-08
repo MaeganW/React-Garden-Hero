@@ -12,9 +12,11 @@ function GamePanel(props) {
     currentEvent,
     setCurrentEvent,
     health,
+    setHealth,
     turn,
     setTurn,
     solutions,
+    chosenSolution,
     setChosenSolution
   } = props;
 
@@ -29,6 +31,7 @@ function GamePanel(props) {
   }, [currentEvent]);
 
   const solutionsDisplayProps = {
+    chosenSolution,
     setChosenSolution,
     solutions
   };
@@ -36,6 +39,11 @@ function GamePanel(props) {
   const handleEndTurn = () => {
     setShowGame(false);
     setShowResults(true);
+    if (currentEvent.solutionId === setChosenSolution.id) {
+      setHealth(health - currentEvent.mitigatedDamage);
+    } else {
+      setHealth(health - currentEvent.unmitigatedDamage);
+    }
   };
 
   return !gameReady ? null : (

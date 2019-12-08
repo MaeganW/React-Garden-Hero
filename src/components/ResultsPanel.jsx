@@ -2,19 +2,13 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 function ResultsPanel(props) {
-  const { setShowResults, setShowGame, setShowEnd } = props;
-
-  const currentEvent = {
-    name: "Groundhog Menace",
-    unmitigatedDamage: 20,
-    mitigatedDamage: 5,
-    solutionId: 5
-  };
-
-  const chosenSolution = {
-    name: "chicken wire fence",
-    id: 5
-  };
+  const {
+    setShowResults,
+    setShowGame,
+    setShowEnd,
+    currentEvent,
+    chosenSolution
+  } = props;
 
   const pointsSaved =
     currentEvent.solutionId === chosenSolution.id

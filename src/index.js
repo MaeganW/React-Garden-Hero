@@ -34,8 +34,10 @@ function App() {
     currentEvent,
     setCurrentEvent,
     health,
+    setHealth,
     turn,
     setTurn,
+    chosenSolution,
     setChosenSolution,
     solutions
   };
@@ -43,7 +45,9 @@ function App() {
   const resultsProps = {
     setShowResults,
     setShowGame,
-    setShowEnd
+    setShowEnd,
+    currentEvent,
+    chosenSolution
   };
 
   const endProps = {

@@ -4,7 +4,9 @@ import { Form, Row, Col } from "react-bootstrap";
 function SolutionsDisplay(props) {
   const { solutions, setChosenSolution } = props;
 
-  const handleSelectSolution = s => setChosenSolution(s);
+  const handleSelectSolution = s => {
+    setChosenSolution(s);
+  };
 
   return (
     <Form>
@@ -16,11 +18,11 @@ function SolutionsDisplay(props) {
           <Col sm={10}>
             {solutions.map(s => (
               <Form.Check
-                onChange={s => handleSelectSolution(s)}
                 type="radio"
                 key={s.id}
                 label={s.name}
                 name="choseSolution"
+                onChange={() => handleSelectSolution(s)}
                 id={s.id}
               />
             ))}
