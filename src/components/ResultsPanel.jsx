@@ -39,7 +39,8 @@ function ResultsPanel(props) {
         <span className="green">{pointsSaved} points</span>
       </h2>
       <br />
-      <h2 className="red">Total Damage: {damageDealt} points</h2>
+      <h2>Total Damage:</h2>
+      <h2 className="red">{damageDealt} points</h2>
       <br />
       <Button variant="success" onClick={handleContinue}>
         Continue

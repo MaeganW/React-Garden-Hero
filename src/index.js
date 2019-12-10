@@ -5,6 +5,7 @@ import StartPanel from "./components/StartPanel";
 import GamePanel from "./components/GamePanel";
 import ResultsPanel from "./components/ResultsPanel";
 import EndPanel from "./components/EndPanel";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { getSolutions } from "./services/SolutionService";
 import { getEvents } from "./services/EventService";
 
@@ -62,10 +63,12 @@ function App() {
 
   return (
     <div className="App">
-      {showStart ? <StartPanel {...startProps} /> : null}
-      {showGame ? <GamePanel {...gameProps} /> : null}
-      {showResults ? <ResultsPanel {...resultsProps} /> : null}
-      {showEnd ? <EndPanel {...endProps} /> : null}
+      <ErrorBoundary>
+        {showStart ? <StartPanel {...startProps} /> : null}
+        {showGame ? <GamePanel {...gameProps} /> : null}
+        {showResults ? <ResultsPanel {...resultsProps} /> : null}
+        {showEnd ? <EndPanel {...endProps} /> : null}
+      </ErrorBoundary>
     </div>
   );
 }
