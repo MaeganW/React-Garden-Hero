@@ -8,6 +8,7 @@ import EndPanel from "./components/EndPanel";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { getSolutions } from "./services/SolutionService";
 import { getEvents } from "./services/EventService";
+import { GameProvider } from "./context/gameContext";
 
 function App() {
   const [showStart, setShowStart] = useState(true);
@@ -15,7 +16,7 @@ function App() {
   const [showResults, setShowResults] = useState(false);
   const [showEnd, setShowEnd] = useState(false);
 
-  const [health, setHealth] = useState(100);
+  // const [health, setHealth] = useState(100);
   const [currentEvent, setCurrentEvent] = useState(null);
   const [chosenSolution, setChosenSolution] = useState(null);
   const [turn, setTurn] = useState(0);
@@ -34,8 +35,8 @@ function App() {
     events,
     currentEvent,
     setCurrentEvent,
-    health,
-    setHealth,
+    // health,
+    // setHealth,
     turn,
     setTurn,
     chosenSolution,
@@ -56,18 +57,20 @@ function App() {
   const endProps = {
     setShowEnd,
     setShowGame,
-    health,
-    setHealth,
+    // health,
+    // setHealth,
     setTurn
   };
 
   return (
     <div className="App">
       <ErrorBoundary>
-        {showStart ? <StartPanel {...startProps} /> : null}
-        {showGame ? <GamePanel {...gameProps} /> : null}
-        {showResults ? <ResultsPanel {...resultsProps} /> : null}
-        {showEnd ? <EndPanel {...endProps} /> : null}
+        <GameProvider>
+          {showStart ? <StartPanel {...startProps} /> : null}
+          {showGame ? <GamePanel {...gameProps} /> : null}
+          {showResults ? <ResultsPanel {...resultsProps} /> : null}
+          {showEnd ? <EndPanel {...endProps} /> : null}
+        </GameProvider>
       </ErrorBoundary>
     </div>
   );

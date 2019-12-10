@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import SolutionsDisplay from "./SolutionsDisplay";
+import { useGameState, useGameDispatch } from "../context/gameContext";
 
 function GamePanel(props) {
   const [gameReady, setGameReady] = useState(false);
@@ -11,14 +12,15 @@ function GamePanel(props) {
     events,
     currentEvent,
     setCurrentEvent,
-    health,
-    setHealth,
     turn,
     setTurn,
     solutions,
     chosenSolution,
     setChosenSolution
   } = props;
+
+  const { health } = useGameState();
+  const dispatch = useGameDispatch();
 
   useEffect(() => {
     setTurn(turn + 1);
@@ -38,9 +40,15 @@ function GamePanel(props) {
 
   const calculateHealth = () => {
     if (currentEvent.solutionId === chosenSolution.id) {
-      setHealth(health - 5);
+      return dispatch({
+        type: "decHealth",
+        payload: 5
+      });
     } else {
-      setHealth(health - currentEvent.damage);
+      return dispatch({
+        type: "decHealth",
+        payload: currentEvent.damage
+      });
     }
   };
 
