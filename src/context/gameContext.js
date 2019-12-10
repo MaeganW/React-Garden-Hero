@@ -1,25 +1,47 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-// const [showStart, setShowStart] = useState(true);
-// const [showGame, setShowGame] = useState(false);
-// const [showResults, setShowResults] = useState(false);
-// const [showEnd, setShowEnd] = useState(false);
-
-// const [health, setHealth] = useState(100);
-// const [currentEvent, setCurrentEvent] = useState(null);
-// const [chosenSolution, setChosenSolution] = useState(null);
-// const [turn, setTurn] = useState(0);
-
-const GameStateContext = createContext();
-const GameDispatchContext = createContext();
+const initialGameState = {
+  health: 100,
+  currentEvent: null,
+  chosenSolution: null,
+  turn: 0,
+  showStart: true,
+  showGame: false,
+  showResults: false,
+  showEnd: false
+};
 
 function gameReducer(state, action) {
   switch (action.type) {
     case "decHealth": {
-      return { health: state.health - action.payload };
+      return { ...state, health: state.health - action.payload };
     }
     case "setHealth": {
-      return { health: action.payload };
+      return { ...state, health: action.payload };
+    }
+    case "incTurn": {
+      return { ...state, turn: state.turn + 1 };
+    }
+    case "setTurn": {
+      return { ...state, turn: action.payload };
+    }
+    case "setCurrentEvent": {
+      return { ...state, currentEvent: action.payload };
+    }
+    case "setChosenSolution": {
+      return { ...state, chosenSolution: action.payload };
+    }
+    case "setShowStart": {
+      return { ...state, showStart: action.payload };
+    }
+    case "setShowGame": {
+      return { ...state, showGame: action.payload };
+    }
+    case "setShowResults": {
+      return { ...state, showResults: action.payload };
+    }
+    case "setShowEnd": {
+      return { ...state, showEnd: action.payload };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
@@ -27,16 +49,8 @@ function gameReducer(state, action) {
   }
 }
 
-function GameProvider({ children }) {
-  const [state, dispatch] = useReducer(gameReducer, { health: 100 });
-  return (
-    <GameStateContext.Provider value={state}>
-      <GameDispatchContext.Provider value={dispatch}>
-        {children}
-      </GameDispatchContext.Provider>
-    </GameStateContext.Provider>
-  );
-}
+const GameStateContext = createContext();
+const GameDispatchContext = createContext();
 
 function useGameState() {
   const context = useContext(GameStateContext);
@@ -52,6 +66,17 @@ function useGameDispatch() {
     throw new Error("useGameDispatch must be used within a GameProvider");
   }
   return context;
+}
+
+function GameProvider({ children }) {
+  const [state, dispatch] = useReducer(gameReducer, initialGameState);
+  return (
+    <GameStateContext.Provider value={state}>
+      <GameDispatchContext.Provider value={dispatch}>
+        {children}
+      </GameDispatchContext.Provider>
+    </GameStateContext.Provider>
+  );
 }
 
 export { GameProvider, useGameState, useGameDispatch };
