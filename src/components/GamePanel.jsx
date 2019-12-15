@@ -5,36 +5,30 @@ import { useGameState, useGameDispatch } from "../context/gameContext";
 
 function GamePanel(props) {
   const [gameReady, setGameReady] = useState(false);
-
   const {
-    setShowGame,
-    setShowResults,
-    events,
-    currentEvent,
-    setCurrentEvent,
+    showGame,
+    health,
     turn,
-    setTurn,
-    solutions,
     chosenSolution,
-    setChosenSolution
-  } = props;
-
-  const { health } = useGameState();
+    currentEvent
+  } = useGameState();
   const dispatch = useGameDispatch();
+  const { events, solutions } = props;
 
   useEffect(() => {
-    setTurn(turn + 1);
+    dispatch({ type: "incTurn" });
   }, []);
 
   useEffect(() => {
     const randomEventId = Math.ceil(Math.random() * events.length);
-    setCurrentEvent(events.find(e => e.id === randomEventId));
+    dispatch({
+      type: "setCurrentEvent",
+      payload: events.find(e => e.id === randomEventId)
+    });
     setGameReady(true);
   }, [currentEvent]);
 
   const solutionsDisplayProps = {
-    chosenSolution,
-    setChosenSolution,
     solutions
   };
 
@@ -53,12 +47,11 @@ function GamePanel(props) {
   };
 
   const handleEndTurn = () => {
-    setShowGame(false);
-    setShowResults(true);
+    dispatch({ type: "showResults" });
     calculateHealth();
   };
 
-  return !gameReady ? null : (
+  return showGame && gameReady ? (
     <div className="game-panel panel">
       <div className="game-panel__top">
         <div className="game-panel__event">
@@ -85,7 +78,7 @@ function GamePanel(props) {
         End Turn {turn}
       </Button>
     </div>
-  );
+  ) : null;
 }
 
 export default GamePanel;

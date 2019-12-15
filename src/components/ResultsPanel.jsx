@@ -1,34 +1,21 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useGameState, useGameDispatch } from "../context/gameContext";
 
 function ResultsPanel(props) {
-  const {
-    setShowResults,
-    setShowGame,
-    setShowEnd,
-    currentEvent,
-    chosenSolution,
-    setChosenSolution,
-    turn
-  } = props;
-
-  const pointsSaved =
-    currentEvent.solutionId === chosenSolution.id ? currentEvent.damage - 5 : 0;
-
-  const damageDealt =
-    currentEvent.solutionId === chosenSolution.id ? 5 : currentEvent.damage;
+  const dispatch = useGameDispatch();
+  const { showResults, currentEvent, chosenSolution, turn } = useGameState();
 
   const handleContinue = () => {
-    setChosenSolution(null);
+    dispatch({ type: "setChosenSolution", payload: null });
     if (turn < 4) {
-      setShowGame(true);
+      dispatch({ type: "showGame" });
     } else {
-      setShowEnd(true);
+      dispatch({ type: "showEnd" });
     }
-    setShowResults(false);
   };
 
-  return (
+  return showResults && currentEvent ? (
     <div className="results-panel panel">
       <h2>
         The <span className="red">{currentEvent.name}</span> took{" "}
@@ -36,17 +23,27 @@ function ResultsPanel(props) {
       </h2>
       <h2>
         Your <span className="green">{chosenSolution.name}</span> saved{" "}
-        <span className="green">{pointsSaved} points</span>
+        <span className="green">
+          {currentEvent.solutionId === chosenSolution.id
+            ? currentEvent.damage - 5
+            : 0}{" "}
+          points
+        </span>
       </h2>
       <br />
       <h2>Total Damage:</h2>
-      <h2 className="red">{damageDealt} points</h2>
+      <h2 className="red">
+        {currentEvent.solutionId === chosenSolution.id
+          ? 5
+          : currentEvent.damage}{" "}
+        points
+      </h2>
       <br />
       <Button variant="success" onClick={handleContinue}>
         Continue
       </Button>
     </div>
-  );
+  ) : null;
 }
 
 export default ResultsPanel;

@@ -11,6 +11,13 @@ const initialGameState = {
   showEnd: false
 };
 
+const resetPanelState = {
+  showStart: false,
+  showGame: false,
+  showResults: false,
+  showEnd: false
+};
+
 function gameReducer(state, action) {
   switch (action.type) {
     case "decHealth": {
@@ -31,17 +38,33 @@ function gameReducer(state, action) {
     case "setChosenSolution": {
       return { ...state, chosenSolution: action.payload };
     }
-    case "setShowStart": {
-      return { ...state, showStart: action.payload };
+    case "showStart": {
+      return {
+        ...state,
+        ...resetPanelState,
+        showStart: true
+      };
     }
-    case "setShowGame": {
-      return { ...state, showGame: action.payload };
+    case "showGame": {
+      return {
+        ...state,
+        ...resetPanelState,
+        showGame: true
+      };
     }
-    case "setShowResults": {
-      return { ...state, showResults: action.payload };
+    case "showResults": {
+      return {
+        ...state,
+        ...resetPanelState,
+        showResults: true
+      };
     }
-    case "setShowEnd": {
-      return { ...state, showEnd: action.payload };
+    case "showEnd": {
+      return {
+        ...state,
+        ...resetPanelState,
+        showEnd: true
+      };
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);

@@ -1,12 +1,10 @@
 import React from "react";
 import { Form, Row, Col } from "react-bootstrap";
+import { useGameDispatch } from "../context/gameContext";
 
 function SolutionsDisplay(props) {
-  const { solutions, setChosenSolution } = props;
-
-  const handleSelectSolution = s => {
-    setChosenSolution(s);
-  };
+  const { solutions } = props;
+  const dispatch = useGameDispatch();
 
   return (
     <Form>
@@ -22,7 +20,9 @@ function SolutionsDisplay(props) {
                 key={s.id}
                 label={s.name}
                 name="choseSolution"
-                onChange={() => handleSelectSolution(s)}
+                onChange={() =>
+                  dispatch({ type: "setChosenSolution", payload: s })
+                }
                 id={s.id}
               />
             ))}

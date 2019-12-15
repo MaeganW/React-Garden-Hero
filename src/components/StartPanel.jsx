@@ -1,15 +1,12 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useGameState, useGameDispatch } from "../context/gameContext";
 
 function StartPanel(props) {
-  const { setShowStart, setShowGame } = props;
+  const { showStart } = useGameState();
+  const dispatch = useGameDispatch();
 
-  const handleStart = () => {
-    setShowStart(false);
-    setShowGame(true);
-  };
-
-  return (
+  return showStart ? (
     <div className="start-panel panel">
       <h1 className="green">Rules</h1>
       <p>
@@ -25,11 +22,11 @@ function StartPanel(props) {
       </p>
       <p>If your plant's health drops below 50 by the end, you lose.</p>
       <p>Choose wisely.</p>
-      <Button onClick={handleStart} variant="success">
+      <Button onClick={() => dispatch({ type: "showGame" })} variant="success">
         Start Game
       </Button>
     </div>
-  );
+  ) : null;
 }
 
 export default StartPanel;
