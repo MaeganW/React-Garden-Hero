@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { useGameDispatch } from "../context/gameContext";
 
 function StartPanel(props) {
   const history = useHistory();
+  const dispatch = useGameDispatch();
+
+  useEffect(() => {
+    dispatch({ type: "setTurn", payload: 0 });
+    dispatch({ type: "setHealth", payload: 100 });
+  }, []);
 
   return (
     <div className="start-panel panel">
