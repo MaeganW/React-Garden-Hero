@@ -1,19 +1,17 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useGameState, useGameDispatch } from "../context/gameContext";
-import { useHistory } from "react-router-dom";
 
 function ResultsPanel(props) {
   const dispatch = useGameDispatch();
-  const history = useHistory();
   const { currentEvent, chosenSolution, turn } = useGameState();
 
   const handleContinue = () => {
     dispatch({ type: "setChosenSolution", payload: null });
     if (turn < 4) {
-      history.push("/game");
+      dispatch({ type: "showGame" });
     } else {
-      history.push("/end");
+      dispatch({ type: "showEnd" });
     }
   };
 

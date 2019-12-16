@@ -5,14 +5,12 @@ const initialGameState = {
   currentEvent: null,
   chosenSolution: null,
   turn: 0,
-  showStart: true,
-  showGame: false,
+  showGame: true,
   showResults: false,
   showEnd: false
 };
 
 const resetPanelState = {
-  showStart: false,
   showGame: false,
   showResults: false,
   showEnd: false
@@ -37,13 +35,6 @@ function gameReducer(state, action) {
     }
     case "setChosenSolution": {
       return { ...state, chosenSolution: action.payload };
-    }
-    case "showStart": {
-      return {
-        ...state,
-        ...resetPanelState,
-        showStart: true
-      };
     }
     case "showGame": {
       return {

@@ -1,17 +1,15 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useGameState, useGameDispatch } from "../context/gameContext";
-import { useHistory } from "react-router-dom";
 
 function EndPanel(props) {
   const { health } = useGameState();
   const dispatch = useGameDispatch();
-  const history = useHistory();
 
   const handlePlayAgain = () => {
     dispatch({ type: "setTurn", payload: 0 });
     dispatch({ type: "setHealth", payload: 100 });
-    history.push("/game");
+    dispatch({ type: "showGame" });
   };
 
   return (
