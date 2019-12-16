@@ -6,21 +6,18 @@ import { useGameState, useGameDispatch } from "../context/gameContext";
 function GamePanel(props) {
   const [gameReady, setGameReady] = useState(false);
   const { health, turn, chosenSolution, currentEvent } = useGameState();
-  const dispatch = useGameDispatch();
   const { events, solutions } = props;
-
-  useEffect(() => {
-    dispatch({ type: "incTurn" });
-  }, []);
+  const dispatch = useGameDispatch();
 
   useEffect(() => {
     const randomEventId = Math.ceil(Math.random() * events.length);
+    dispatch({ type: "incTurn" });
     dispatch({
       type: "setCurrentEvent",
       payload: events.find(e => e.id === randomEventId)
     });
     setGameReady(true);
-  }, [currentEvent]);
+  }, []);
 
   const solutionsDisplayProps = {
     solutions

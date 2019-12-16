@@ -11,12 +11,12 @@ function App() {
   return (
     <div className="App">
       <ErrorBoundary>
-        <GameProvider>
-          <Router>
+        <Router>
+          <GameProvider>
             <Route exact path="/" render={() => <StartPage />} />
             <Route path="/game" render={() => <GamePage />} />
-          </Router>
-        </GameProvider>
+          </GameProvider>
+        </Router>
       </ErrorBoundary>
     </div>
   );
