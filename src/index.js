@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles.scss";
-import StartPanel from "./components/StartPanel";
-import Game from "./components/Game";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { GameProvider } from "./context/gameContext";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./styles.scss";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { StartPage } from "./components/pages/StartPage";
+import { GamePage } from "./components/pages/GamePage";
+import { GameProvider } from "./context/gameContext";
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       <ErrorBoundary>
         <GameProvider>
           <Router>
-            <Route exact path="/" render={() => <StartPanel />} />
-            <Route path="/game" render={() => <Game />} />
+            <Route exact path="/" render={() => <StartPage />} />
+            <Route path="/game" render={() => <GamePage />} />
           </Router>
         </GameProvider>
       </ErrorBoundary>

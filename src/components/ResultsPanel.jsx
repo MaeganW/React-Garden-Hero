@@ -46,4 +46,4 @@ function ResultsPanel(props) {
   ) : null;
 }
 
-export default ResultsPanel;
+export { ResultsPanel };

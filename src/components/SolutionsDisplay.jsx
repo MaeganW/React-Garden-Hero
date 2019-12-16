@@ -33,4 +33,4 @@ function SolutionsDisplay(props) {
   );
 }
 
-export default SolutionsDisplay;
+export { SolutionsDisplay };

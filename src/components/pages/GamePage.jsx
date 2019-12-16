@@ -1,12 +1,12 @@
 import React from "react";
-import GamePanel from "./GamePanel";
-import ResultsPanel from "./ResultsPanel";
-import EndPanel from "./EndPanel";
-import { getSolutions } from "../services/SolutionService";
-import { getEvents } from "../services/EventService";
-import { useGameState } from "../context/gameContext";
+import { GamePanel } from "../GamePanel";
+import { ResultsPanel } from "../ResultsPanel";
+import { EndPanel } from "../EndPanel";
+import { getSolutions } from "../../services/SolutionService";
+import { getEvents } from "../../services/EventService";
+import { useGameState } from "../../context/gameContext";
 
-function Game(props) {
+function GamePage(props) {
   const { showGame, showResults, showEnd } = useGameState();
   const solutions = getSolutions();
   const events = getEvents();
@@ -25,4 +25,4 @@ function Game(props) {
   );
 }
 
-export default Game;
+export { GamePage };

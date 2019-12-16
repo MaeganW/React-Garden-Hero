@@ -26,4 +26,4 @@ function EndPanel(props) {
   );
 }
 
-export default EndPanel;
+export { EndPanel };

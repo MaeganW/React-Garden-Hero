@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import SolutionsDisplay from "./SolutionsDisplay";
+import { SolutionsDisplay } from "./SolutionsDisplay";
 import { useGameState, useGameDispatch } from "../context/gameContext";
 
 function GamePanel(props) {
@@ -75,4 +75,4 @@ function GamePanel(props) {
   ) : null;
 }
 
-export default GamePanel;
+export { GamePanel };

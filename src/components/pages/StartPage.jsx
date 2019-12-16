@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { useGameDispatch } from "../context/gameContext";
+import { useGameDispatch } from "../../context/gameContext";
 
-function StartPanel(props) {
+function StartPage(props) {
   const history = useHistory();
   const dispatch = useGameDispatch();
 
@@ -35,4 +35,4 @@ function StartPanel(props) {
   );
 }
 
-export default StartPanel;
+export { StartPage };
