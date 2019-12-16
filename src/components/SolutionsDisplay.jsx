@@ -10,10 +10,10 @@ function SolutionsDisplay(props) {
     <Form>
       <fieldset>
         <Form.Group as={Row}>
-          <Form.Label as="legend" column sm={10}>
+          <Form.Label as="legend" column sm={12}>
             <h2 className="green">Choose Wisely</h2>
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={12}>
             {solutions.map(s => (
               <Form.Check
                 type="radio"
