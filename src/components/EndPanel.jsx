@@ -1,18 +1,20 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useGameState, useGameDispatch } from "../context/gameContext";
+import { useHistory } from "react-router-dom";
 
 function EndPanel(props) {
-  const { showEnd, health } = useGameState();
+  const { health } = useGameState();
   const dispatch = useGameDispatch();
+  const history = useHistory();
 
   const handlePlayAgain = () => {
     dispatch({ type: "setTurn", payload: 0 });
     dispatch({ type: "setHealth", payload: 100 });
-    dispatch({ type: "showGame" });
+    history.push("/game");
   };
 
-  return showEnd ? (
+  return (
     <div className="end-panel panel">
       <h2 className="green">Final Score</h2>
       <h2>{health}</h2>
@@ -23,7 +25,7 @@ function EndPanel(props) {
       )}
       <Button onClick={handlePlayAgain}>Play Again</Button>
     </div>
-  ) : null;
+  );
 }
 
 export default EndPanel;

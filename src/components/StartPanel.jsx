@@ -1,12 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useGameState, useGameDispatch } from "../context/gameContext";
+import { useHistory } from "react-router-dom";
 
 function StartPanel(props) {
-  const { showStart } = useGameState();
-  const dispatch = useGameDispatch();
+  const history = useHistory();
 
-  return showStart ? (
+  return (
     <div className="start-panel panel">
       <h1 className="green">Rules</h1>
       <p>
@@ -22,11 +21,11 @@ function StartPanel(props) {
       </p>
       <p>If your plant's health drops below 50 by the end, you lose.</p>
       <p>Choose wisely.</p>
-      <Button onClick={() => dispatch({ type: "showGame" })} variant="success">
+      <Button onClick={() => history.push("/game")} variant="success">
         Start Game
       </Button>
     </div>
-  ) : null;
+  );
 }
 
 export default StartPanel;

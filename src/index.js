@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./styles.scss";
 import StartPanel from "./components/StartPanel";
@@ -8,7 +8,8 @@ import EndPanel from "./components/EndPanel";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { getSolutions } from "./services/SolutionService";
 import { getEvents } from "./services/EventService";
-import { GameProvider, useGameState } from "./context/gameContext";
+import { GameProvider } from "./context/gameContext";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   const solutions = getSolutions();
@@ -23,10 +24,12 @@ function App() {
     <div className="App">
       <ErrorBoundary>
         <GameProvider>
-          <StartPanel />
-          <GamePanel {...gameProps} />
-          <ResultsPanel />
-          <EndPanel />
+          <Router>
+            <Route exact path="/" render={() => <StartPanel />} />
+            <Route path="/game" render={() => <GamePanel {...gameProps} />} />
+            <Route exact path="/results" render={() => <ResultsPanel />} />
+            <Route exact path="/end" render={() => <EndPanel />} />
+          </Router>
         </GameProvider>
       </ErrorBoundary>
     </div>

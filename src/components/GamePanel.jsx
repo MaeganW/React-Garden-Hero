@@ -2,17 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import SolutionsDisplay from "./SolutionsDisplay";
 import { useGameState, useGameDispatch } from "../context/gameContext";
+import { useHistory } from "react-router-dom";
 
 function GamePanel(props) {
   const [gameReady, setGameReady] = useState(false);
-  const {
-    showGame,
-    health,
-    turn,
-    chosenSolution,
-    currentEvent
-  } = useGameState();
+  const { health, turn, chosenSolution, currentEvent } = useGameState();
   const dispatch = useGameDispatch();
+  const history = useHistory();
   const { events, solutions } = props;
 
   useEffect(() => {
@@ -47,11 +43,11 @@ function GamePanel(props) {
   };
 
   const handleEndTurn = () => {
-    dispatch({ type: "showResults" });
+    history.push("/results");
     calculateHealth();
   };
 
-  return showGame && gameReady ? (
+  return gameReady ? (
     <div className="game-panel panel">
       <div className="game-panel__top">
         <div className="game-panel__event">
