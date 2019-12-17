@@ -65,6 +65,15 @@ function gameReducer(state, action) {
         showEnd: true
       };
     }
+    case "resetGame": {
+      return {
+        ...state,
+        health: 100,
+        turn: 0,
+        solutions: null,
+        events: null
+      };
+    }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`);
     }

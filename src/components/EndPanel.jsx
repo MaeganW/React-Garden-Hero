@@ -7,10 +7,7 @@ function EndPanel(props) {
   const dispatch = useGameDispatch();
 
   const handlePlayAgain = () => {
-    dispatch({ type: "setTurn", payload: 0 });
-    dispatch({ type: "setHealth", payload: 100 });
-    dispatch({ type: "setSolutions", payload: null });
-    dispatch({ type: "setEvents", payload: null });
+    dispatch({ type: "resetGame" });
     dispatch({ type: "showGame" });
   };
 
