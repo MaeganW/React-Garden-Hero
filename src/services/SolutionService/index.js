@@ -1,5 +1,12 @@
 import solutions from "../../data/solutions";
 
-export function getSolutions() {
-  return solutions;
+function getSolutions() {
+  return new Promise((resolve, reject) => {
+    if (!solutions) {
+      reject("No events found");
+    }
+    resolve(solutions);
+  });
 }
+
+export { getSolutions };

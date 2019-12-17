@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GamePanel } from "../GamePanel";
 import { ResultsPanel } from "../ResultsPanel";
 import { EndPanel } from "../EndPanel";
 import { getSolutions } from "../../services/SolutionService";
 import { getEvents } from "../../services/EventService";
-import { useGameState } from "../../context/gameContext";
+import { useGameState, useGameDispatch } from "../../context/gameContext";
 
 function GamePage(props) {
-  const { showGame, showResults, showEnd } = useGameState();
-  const solutions = getSolutions();
-  const events = getEvents();
+  const { events, solutions, showGame, showResults, showEnd } = useGameState();
+  const dispatch = useGameDispatch();
 
-  const gameProps = {
-    events,
-    solutions
-  };
+  useEffect(() => {
+    async function setEventsAndSolutions() {
+      const events = await getEvents();
+      const solutions = await getSolutions();
+      dispatch({ type: "setEvents", payload: events });
+      dispatch({ type: "setSolutions", payload: solutions });
+    }
+    setEventsAndSolutions();
+  }, []);
 
   return (
     <React.Fragment>
-      {showGame ? <GamePanel {...gameProps} /> : null}
+      {showGame && events && solutions ? (
+        <GamePanel events={events} solutions={solutions} />
+      ) : null}
       {showResults ? <ResultsPanel /> : null}
       {showEnd ? <EndPanel /> : null}
     </React.Fragment>

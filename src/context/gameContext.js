@@ -5,6 +5,8 @@ const initialGameState = {
   currentEvent: null,
   chosenSolution: null,
   turn: 0,
+  events: null,
+  solutions: null,
   showGame: true,
   showResults: false,
   showEnd: false
@@ -29,6 +31,12 @@ function gameReducer(state, action) {
     }
     case "setTurn": {
       return { ...state, turn: action.payload };
+    }
+    case "setEvents": {
+      return { ...state, events: action.payload };
+    }
+    case "setSolutions": {
+      return { ...state, solutions: action.payload };
     }
     case "setCurrentEvent": {
       return { ...state, currentEvent: action.payload };
