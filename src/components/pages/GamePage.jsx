@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { GamePanel } from "../GamePanel";
 import { ResultsPanel } from "../ResultsPanel";
 import { EndPanel } from "../EndPanel";
+import { GameSpinner } from "../GameSpinner";
 import { getSolutions } from "../../services/SolutionService";
 import { getEvents } from "../../services/EventService";
 import { useGameState, useGameDispatch } from "../../context/gameContext";
@@ -18,16 +19,16 @@ function GamePage(props) {
       dispatch({ type: "setSolutions", payload: solutions });
     }
     setEventsAndSolutions();
-  }, []);
+  }, [solutions, events]);
 
-  return (
+  return events && solutions ? (
     <React.Fragment>
-      {showGame && events && solutions ? (
-        <GamePanel events={events} solutions={solutions} />
-      ) : null}
+      {showGame ? <GamePanel events={events} solutions={solutions} /> : null}
       {showResults ? <ResultsPanel /> : null}
       {showEnd ? <EndPanel /> : null}
     </React.Fragment>
+  ) : (
+    <GameSpinner />
   );
 }
 

@@ -2,10 +2,12 @@ import solutions from "../../data/solutions";
 
 function getSolutions() {
   return new Promise((resolve, reject) => {
-    if (!solutions) {
-      reject("No events found");
-    }
-    resolve(solutions);
+    setTimeout(() => {
+      if (!solutions) {
+        reject("No events found");
+      }
+      resolve(solutions);
+    }, 500);
   });
 }
 
