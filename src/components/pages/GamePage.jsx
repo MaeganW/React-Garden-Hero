@@ -13,10 +13,14 @@ function GamePage(props) {
 
   useEffect(() => {
     async function setEventsAndSolutions() {
-      const events = await getEvents();
-      const solutions = await getSolutions();
-      dispatch({ type: "setEvents", payload: events });
-      dispatch({ type: "setSolutions", payload: solutions });
+      try {
+        const events = await getEvents();
+        const solutions = await getSolutions();
+        dispatch({ type: "setEvents", payload: events });
+        dispatch({ type: "setSolutions", payload: solutions });
+      } catch (err) {
+        console.error("Error: ", err);
+      }
     }
     setEventsAndSolutions();
   }, [solutions, events]);
