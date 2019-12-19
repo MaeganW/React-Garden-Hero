@@ -1,13 +1,21 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { useGameState, useGameDispatch } from "../context/gameContext";
 
 function EndPanel(props) {
   const { health } = useGameState();
   const dispatch = useGameDispatch();
+  const history = useHistory();
 
   const handlePlayAgain = () => {
     dispatch({ type: "resetGame" });
+    dispatch({ type: "showGame" });
+  };
+
+  const handleChangeDifficulty = () => {
+    dispatch({ type: "resetGame" });
+    history.push("/");
     dispatch({ type: "showGame" });
   };
 
@@ -21,6 +29,7 @@ function EndPanel(props) {
         <h2 className="red">You Lose</h2>
       )}
       <Button onClick={handlePlayAgain}>Play Again</Button>
+      <Button onClick={handleChangeDifficulty}>Change Difficulty</Button>
     </div>
   );
 }

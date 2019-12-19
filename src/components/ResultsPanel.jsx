@@ -4,11 +4,17 @@ import { useGameState, useGameDispatch } from "../context/gameContext";
 
 function ResultsPanel(props) {
   const dispatch = useGameDispatch();
-  const { health, currentEvent, chosenSolution, turn } = useGameState();
+  const {
+    maxTurn,
+    health,
+    currentEvent,
+    chosenSolution,
+    turn
+  } = useGameState();
 
   const handleContinue = () => {
     dispatch({ type: "setChosenSolution", payload: null });
-    if (turn < 5 && health > 50) {
+    if (turn < maxTurn && health > 50) {
       dispatch({ type: "showGame" });
     } else {
       dispatch({ type: "showEnd" });

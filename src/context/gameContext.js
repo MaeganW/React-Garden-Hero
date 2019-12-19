@@ -9,7 +9,8 @@ const initialGameState = {
   solutions: null,
   showGame: true,
   showResults: false,
-  showEnd: false
+  showEnd: false,
+  maxTurn: 3
 };
 
 const resetPanelState = {
@@ -20,6 +21,9 @@ const resetPanelState = {
 
 function gameReducer(state, action) {
   switch (action.type) {
+    case "setMaxTurn": {
+      return { ...state, maxTurn: action.payload };
+    }
     case "decHealth": {
       return { ...state, health: state.health - action.payload };
     }
