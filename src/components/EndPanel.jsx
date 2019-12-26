@@ -29,8 +29,12 @@ function EndPanel(props) {
         <h2 className="red">You Lose</h2>
       )}
       <div className="end-panel__buttons">
-        <Button onClick={handlePlayAgain}>Play Again</Button>
-        <Button onClick={handleChangeDifficulty}>Change Difficulty</Button>
+        <Button onClick={handlePlayAgain} variant="success">
+          Play Again
+        </Button>
+        <Button onClick={handleChangeDifficulty} variant="danger">
+          Change Difficulty
+        </Button>
       </div>
     </div>
   );

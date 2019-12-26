@@ -42,7 +42,6 @@ function StartPage(props) {
         select one.
       </p>
       <p>If your plant's health drops below 50, you lose.</p>
-      <p>Choose wisely.</p>
       <Form>
         <fieldset>
           <Form.Group as={Row}>
