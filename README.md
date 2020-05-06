@@ -1,4 +1,4 @@
-## React Garden Hero
+## React Garden Hero 🌻
 
 You own a small garden in an unpredictable and sometimes inhospitable environment.
 
